@@ -2,31 +2,56 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rb9-sj-ZXj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Dominic Cheung-->
         <scene sceneID="Hsq-Dg-THK">
             <objects>
-                <collectionViewController id="mEA-uZ-Ntz" sceneMemberID="viewController">
+                <collectionViewController id="mEA-uZ-Ntz" customClass="PortfolioCollectionViewController" customModule="DominicCheung" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="QVU-sf-aQO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hvp-z5-4eT">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PortfolioItemCell" id="x8g-ut-sdc">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PortfolioItemCell" id="x8g-ut-sdc" customClass="PortfolioCollectionViewCell" customModule="DominicCheung" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="07s-35-OxW">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eA9-aT-xns">
+                                            <rect key="frame" x="8" y="148" width="184" height="44"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="07s-35-OxW" firstAttribute="top" secondItem="x8g-ut-sdc" secondAttribute="top" id="1uR-eH-Jqp"/>
+                                    <constraint firstItem="07s-35-OxW" firstAttribute="leading" secondItem="x8g-ut-sdc" secondAttribute="leading" id="RGW-Iw-nRs"/>
+                                    <constraint firstAttribute="bottom" secondItem="07s-35-OxW" secondAttribute="bottom" id="Wer-9J-D8I"/>
+                                    <constraint firstItem="eA9-aT-xns" firstAttribute="trailing" secondItem="x8g-ut-sdc" secondAttribute="trailingMargin" id="alG-sF-nBg"/>
+                                    <constraint firstAttribute="trailing" secondItem="07s-35-OxW" secondAttribute="trailing" id="byO-Zi-KVX"/>
+                                    <constraint firstItem="eA9-aT-xns" firstAttribute="bottom" secondItem="x8g-ut-sdc" secondAttribute="bottomMargin" id="iOB-HM-NpZ"/>
+                                    <constraint firstItem="eA9-aT-xns" firstAttribute="leading" secondItem="x8g-ut-sdc" secondAttribute="leadingMargin" id="w9x-Ka-3lu"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="07s-35-OxW" id="Nrd-KO-HFZ"/>
+                                    <outlet property="title" destination="eA9-aT-xns" id="3CF-jQ-jnW"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

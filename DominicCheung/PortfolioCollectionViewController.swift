@@ -14,7 +14,7 @@ let kCellHorizontalMargin : CGFloat = 2.5
 class PortfolioCollectionViewController: UICollectionViewController {
     
     private var portfolio : [[String]] = [
-        ["1", "2", "3"],
+        ["Hello World", "Hello World Again", "Hello World Again and Again"],
         ["11", "22", "33"],
         ["111", "222", "333", "444", "555", "666", "777", "888", "999", "000"]
     ]
@@ -33,7 +33,7 @@ class PortfolioCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -65,8 +65,10 @@ extension PortfolioCollectionViewController : UICollectionViewDataSource {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PortfolioCollectionViewCell
         cell.backgroundColor = UIColor.darkGrayColor()
+        cell.title.text = self.portfolio[indexPath.section][indexPath.row]
+        cell.imageView.backgroundColor = UIColor.lightGrayColor()
         
         return cell
     }
