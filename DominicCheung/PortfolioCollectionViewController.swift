@@ -8,17 +8,17 @@
 
 import UIKit
 
-let kCellVerticalMargin : CGFloat = 2.5
-let kCellHorizontalMargin : CGFloat = 2.5
+let kCellVerticalMargin: CGFloat = 2.5
+let kCellHorizontalMargin: CGFloat = 2.5
 
 class PortfolioCollectionViewController: UICollectionViewController {
     
-    private var portfolio : [[String]] = [
+    private var portfolio: [[String]] = [
         ["Hello World", "Hello World Again", "Hello World Again and Again"],
         ["11", "22", "33"],
         ["111", "222", "333", "444", "555", "666", "777", "888", "999", "000"]
     ]
-    var columns : Int = 0
+    var columns: Int = 0
     private let reuseIdentifier = "PortfolioItemCell"
     private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: kCellVerticalMargin, right: 0)
     
@@ -54,7 +54,7 @@ class PortfolioCollectionViewController: UICollectionViewController {
 
 // MARK: UICollectionViewDataSource
 
-extension PortfolioCollectionViewController : UICollectionViewDataSource {
+extension PortfolioCollectionViewController: UICollectionViewDataSource {
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return self.portfolio.count
@@ -76,13 +76,13 @@ extension PortfolioCollectionViewController : UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 
-extension PortfolioCollectionViewController : UICollectionViewDelegate {
+extension PortfolioCollectionViewController: UICollectionViewDelegate {
     
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
 
-extension PortfolioCollectionViewController : UICollectionViewDelegateFlowLayout {
+extension PortfolioCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let cellWidth = (CGRectGetWidth(collectionView.bounds) - (kCellHorizontalMargin * CGFloat(columns))) / CGFloat(columns)

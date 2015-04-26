@@ -13,9 +13,9 @@ class IntroPageContentViewController: UIViewController {
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    var mainText : String
-    var descriptionText : String
-    var pageIndex : Int
+    var mainText: String
+    var descriptionText: String
+    var pageIndex: Int
     
     // MARK: Initialiser
     

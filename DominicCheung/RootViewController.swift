@@ -8,18 +8,18 @@
 
 import UIKit
 
-let kHaveShownIntroKey : String = "have_shown_intro"
+let kHaveShownIntroKey: String = "have_shown_intro"
 
-class RootViewController : UIViewController {
+class RootViewController: UIViewController {
     
-    var introPageViewController : IntroPageViewController?
-    var portfolioCollectionViewController : UINavigationController
+    var introPageViewController: IntroPageViewController?
+    var portfolioCollectionViewController: UINavigationController
     
     // MARK: Initialiser
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         // Setup PortfolioCollectionViewController
-        let portfolioCollectionStoryboard : UIStoryboard = UIStoryboard(name: "PortfolioCollectionStoryboard", bundle: nil)
+        let portfolioCollectionStoryboard: UIStoryboard = UIStoryboard(name: "PortfolioCollectionStoryboard", bundle: nil)
         portfolioCollectionViewController = portfolioCollectionStoryboard.instantiateInitialViewController() as! UINavigationController
         
         super.init(nibName: nil, bundle: nil)
@@ -59,7 +59,7 @@ class RootViewController : UIViewController {
             self.addChildViewController(introPageVC)
             if ((self.view) != nil) {
                 introPageVC.view.frame = self.view.bounds
-                let subviews : NSArray = self.view.subviews
+                let subviews: NSArray = self.view.subviews
                 if (!subviews.containsObject(introPageVC)) {
                     self.view.addSubview(introPageVC.view!)
                     introPageVC.didMoveToParentViewController(self)
@@ -71,7 +71,7 @@ class RootViewController : UIViewController {
 
 // MARK: IntroPageDismissDelegate
 
-extension RootViewController : IntroPageDismissDelegate {
+extension RootViewController: IntroPageDismissDelegate {
     
     func dismissIntroPage() {
         self.introPageViewController = nil
