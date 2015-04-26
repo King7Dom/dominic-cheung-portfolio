@@ -14,7 +14,8 @@ let kCellHorizontalMargin: CGFloat = 2.5
 class PortfolioCollectionViewController: UICollectionViewController {
     
     private var portfolio: [PortfolioSection]
-    private let reuseIdentifier = "PortfolioItemCell"
+    private let cellReuseIdentifier = "PortfolioItemCell"
+    private let headerReuseIdentifier = "PortfolioHeaderView"
     private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: kCellVerticalMargin, right: 0)
     var columns: Int
     
@@ -91,7 +92,7 @@ extension PortfolioCollectionViewController: UICollectionViewDataSource {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PortfolioCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! PortfolioCollectionViewCell
         cell.backgroundColor = UIColor.darkGrayColor()
         cell.title.text = self.portfolio[indexPath.section].sectionItems[indexPath.row].title
         
@@ -101,6 +102,17 @@ extension PortfolioCollectionViewController: UICollectionViewDataSource {
             cell.imageView.backgroundColor = UIColor.lightGrayColor()
         }
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerReuseIdentifier, forIndexPath: indexPath) as! PortfolioSectionHeaderView
+            headerView.label.text = self.portfolio[indexPath.section].sectionTitle
+            return headerView
+        default:
+            assert(false, "Unexpected UICollectionElementOfKind: \(kind)")
+        }
     }
 }
 
