@@ -14,6 +14,7 @@
 		188D292A1AECF2E7001A9557 /* PortfolioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D29291AECF2E7001A9557 /* PortfolioItem.swift */; };
 		188D292C1AECFF2C001A9557 /* PortfolioSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D292B1AECFF2C001A9557 /* PortfolioSectionHeaderView.swift */; };
 		188D292E1AED14C0001A9557 /* AppContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D292D1AED14C0001A9557 /* AppContentManager.swift */; };
+		188D29311AED1EFC001A9557 /* portfolio-content.json in Resources */ = {isa = PBXBuildFile; fileRef = 188D29301AED1EFC001A9557 /* portfolio-content.json */; };
 		18D8AC271AE893D2005ED683 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8AC261AE893D2005ED683 /* AppDelegate.swift */; };
 		18D8AC2E1AE893D2005ED683 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D8AC2D1AE893D2005ED683 /* Images.xcassets */; };
 		18D8AC311AE893D2005ED683 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D8AC2F1AE893D2005ED683 /* LaunchScreen.xib */; };
@@ -42,6 +43,7 @@
 		188D29291AECF2E7001A9557 /* PortfolioItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioItem.swift; sourceTree = "<group>"; };
 		188D292B1AECFF2C001A9557 /* PortfolioSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioSectionHeaderView.swift; sourceTree = "<group>"; };
 		188D292D1AED14C0001A9557 /* AppContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContentManager.swift; sourceTree = "<group>"; };
+		188D29301AED1EFC001A9557 /* portfolio-content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "portfolio-content.json"; path = "Resources/portfolio-content.json"; sourceTree = SOURCE_ROOT; };
 		18D8AC211AE893D2005ED683 /* DominicCheung.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DominicCheung.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D8AC251AE893D2005ED683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D8AC261AE893D2005ED683 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		188D292F1AED1E13001A9557 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				188D29301AED1EFC001A9557 /* portfolio-content.json */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		18D8AC181AE893D1005ED683 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 				18D8AC2F1AE893D2005ED683 /* LaunchScreen.xib */,
 				188D29261AECF1D2001A9557 /* Model */,
 				188D291D1AEC9FC4001A9557 /* Portfolio */,
+				188D292F1AED1E13001A9557 /* Resources */,
 				18D8AC241AE893D2005ED683 /* Supporting Files */,
 			);
 			path = DominicCheung;
@@ -247,6 +258,7 @@
 				18D8AC2E1AE893D2005ED683 /* Images.xcassets in Resources */,
 				188D29231AECAEA3001A9557 /* PortfolioCollectionStoryboard.storyboard in Resources */,
 				18D8AD501AE8EFB1005ED683 /* IntroPageContentViewController.xib in Resources */,
+				188D29311AED1EFC001A9557 /* portfolio-content.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

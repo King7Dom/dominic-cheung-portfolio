@@ -8,7 +8,15 @@
 
 import UIKit
 
+let kPayloadSectionKey = "section"
+let kPayloadSectionTitleKey = "section title"
+let kPayloadSectionItemsKey = "section items"
+
+let kPayloadItemTitleKey = "title"
+
 class AppContentManager: NSObject {
+    
+    // MARK: Class
     
     class var sharedInstance: AppContentManager{
     
@@ -18,34 +26,60 @@ class AppContentManager: NSObject {
         return Singleton.instance
     }
     
-    var portfolio: [PortfolioSection]
+    // MARK: Instance
+    
+    private var portfolio: [PortfolioSection]
+    private var contentObservers: NSMutableArray
     
     override private init() {
-        self.portfolio = []
-        
-        let section1 = PortfolioSection(sectionTitle: "Hello World", sectionItems: [])
-        section1.sectionItems.append(PortfolioItem(title: "Hello World", thumbnail: nil))
-        section1.sectionItems.append(PortfolioItem(title: "Hello World Again", thumbnail: nil))
-        section1.sectionItems.append(PortfolioItem(title: "Hello World Again and Again", thumbnail: nil))
-        
-        let section2 = PortfolioSection(sectionTitle: "Cool Section", sectionItems: [])
-        section2.sectionItems.append(PortfolioItem(title: "11", thumbnail: nil))
-        section2.sectionItems.append(PortfolioItem(title: "22", thumbnail: nil))
-        section2.sectionItems.append(PortfolioItem(title: "33", thumbnail: nil))
-        
-        let section3 = PortfolioSection(sectionTitle: "Last Section", sectionItems: [])
-        section3.sectionItems.append(PortfolioItem(title: "111", thumbnail: nil))
-        section3.sectionItems.append(PortfolioItem(title: "222", thumbnail: nil))
-        section3.sectionItems.append(PortfolioItem(title: "333", thumbnail: nil))
-        section3.sectionItems.append(PortfolioItem(title: "444", thumbnail: nil))
-        section3.sectionItems.append(PortfolioItem(title: "555", thumbnail: nil))
-        section3.sectionItems.append(PortfolioItem(title: "666", thumbnail: nil))
-        section3.sectionItems.append(PortfolioItem(title: "777", thumbnail: nil))
-        section3.sectionItems.append(PortfolioItem(title: "888", thumbnail: nil))
-        section3.sectionItems.append(PortfolioItem(title: "999", thumbnail: nil))
-        
-        self.portfolio += [section1, section2, section3]
+        self.portfolio = [PortfolioSection]()
+        self.contentObservers = NSMutableArray()
         
         super.init()
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            self.loadLocalData()
+        })
     }
+    
+    func addContentObserver(contentObserver: AnyObject) {
+        if contentObserver is AppContentObserver {
+            self.contentObservers.addObject(contentObserver)
+        }
+    }
+    
+    func removeContentObserver(contentObserver: AnyObject) {
+        self.contentObservers.removeObject(contentObserver)
+    }
+    
+    func loadLocalData() {
+        
+        var deserialisingError: NSError?
+        let localFilePath = NSBundle.mainBundle().pathForResource("portfolio-content", ofType: "json")
+        let jsonData = NSData(contentsOfFile: localFilePath!)
+        let payload = NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions(0), error: &deserialisingError) as? NSDictionary
+        
+        let sections: NSArray = payload![kPayloadSectionKey] as! NSArray
+        for section in sections {
+            let portfolioSection = PortfolioSection(sectionTitle: section[kPayloadSectionTitleKey] as! String, sectionItems: [])
+            for sectionItem in section[kPayloadSectionItemsKey] as! NSArray {
+                let portfolioItem = PortfolioItem(title: sectionItem[kPayloadItemTitleKey] as! String, thumbnail: nil)
+                portfolioSection.sectionItems.append(portfolioItem)
+            }
+            self.portfolio.append(portfolioSection)
+        }
+        
+        self.notifyContentObserversForContentUpdate()
+    }
+    
+    func notifyContentObserversForContentUpdate() {
+        for observer in contentObservers {
+            let contentObserver = observer as! AppContentObserver
+            contentObserver.portfolioContentUpdated(self.portfolio)
+        }
+    }
+}
+
+protocol AppContentObserver {
+    func portfolioContentUpdated(portfolio: [PortfolioSection]) -> Void
 }

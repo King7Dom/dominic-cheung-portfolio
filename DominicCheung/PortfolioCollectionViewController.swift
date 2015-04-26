@@ -19,15 +19,21 @@ class PortfolioCollectionViewController: UICollectionViewController {
     private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: kCellVerticalMargin, right: 0)
     var columns: Int
     
+    // MARK: Initialiser
+    
     required init(coder aDecoder: NSCoder) {
         
-        self.portfolio = AppContentManager.sharedInstance.portfolio
-        
+        self.portfolio = []
         self.columns = 0
         
         super.init(coder: aDecoder)
         
         self.calculateNumberOfColumns()
+        AppContentManager.sharedInstance.addContentObserver(self)
+    }
+    
+    deinit {
+        AppContentManager.sharedInstance.removeContentObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -115,5 +121,15 @@ extension PortfolioCollectionViewController: UICollectionViewDelegateFlowLayout 
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return kCellVerticalMargin
+    }
+}
+
+// MARK: AppContentObserver
+
+extension PortfolioCollectionViewController: AppContentObserver {
+    
+    func portfolioContentUpdated(portfolio: [PortfolioSection]) {
+        self.portfolio = portfolio
+        self.collectionView?.reloadData()
     }
 }
