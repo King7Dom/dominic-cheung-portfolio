@@ -8,7 +8,7 @@
 
 import UIKit
 
-let kFirstTimeUserKey = "firstTimeUser"
+let kHaveShownIntroKey : String = "have_shown_intro"
 
 class RootViewController : UIViewController {
     
@@ -16,20 +16,18 @@ class RootViewController : UIViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
-        
-        if (NSUserDefaults.standardUserDefaults().boolForKey(kFirstTimeUserKey) != false) {
-            
-        }
     }
 
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required convenience init(coder aDecoder: NSCoder) {
+        self.init(nibName: nil, bundle: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.displayIntro()
+        if (NSUserDefaults.standardUserDefaults().boolForKey(kHaveShownIntroKey) == false) {
+            self.displayIntro()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,5 +57,6 @@ extension RootViewController : IntroPageDismissDelegate {
     
     func dismissIntroPage() {
         self.introPageViewController = nil
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: kHaveShownIntroKey)
     }
 }
