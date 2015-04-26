@@ -13,14 +13,43 @@ let kCellHorizontalMargin: CGFloat = 2.5
 
 class PortfolioCollectionViewController: UICollectionViewController {
     
-    private var portfolio: [[String]] = [
-        ["Hello World", "Hello World Again", "Hello World Again and Again"],
-        ["11", "22", "33"],
-        ["111", "222", "333", "444", "555", "666", "777", "888", "999", "000"]
-    ]
-    var columns: Int = 0
+    private var portfolio: [PortfolioSection]
     private let reuseIdentifier = "PortfolioItemCell"
     private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: kCellVerticalMargin, right: 0)
+    var columns: Int
+    
+    required init(coder aDecoder: NSCoder) {
+        self.portfolio = []
+        
+        let section1 = PortfolioSection(sectionTitle: "Hello World", sectionItems: [])
+        section1.sectionItems.append(PortfolioItem(title: "Hello World", thumbnail: nil))
+        section1.sectionItems.append(PortfolioItem(title: "Hello World Again", thumbnail: nil))
+        section1.sectionItems.append(PortfolioItem(title: "Hello World Again and Again", thumbnail: nil))
+        
+        let section2 = PortfolioSection(sectionTitle: "Cool Section", sectionItems: [])
+        section2.sectionItems.append(PortfolioItem(title: "11", thumbnail: nil))
+        section2.sectionItems.append(PortfolioItem(title: "22", thumbnail: nil))
+        section2.sectionItems.append(PortfolioItem(title: "33", thumbnail: nil))
+
+        let section3 = PortfolioSection(sectionTitle: "Last Section", sectionItems: [])
+        section3.sectionItems.append(PortfolioItem(title: "111", thumbnail: nil))
+        section3.sectionItems.append(PortfolioItem(title: "222", thumbnail: nil))
+        section3.sectionItems.append(PortfolioItem(title: "333", thumbnail: nil))
+        section3.sectionItems.append(PortfolioItem(title: "444", thumbnail: nil))
+        section3.sectionItems.append(PortfolioItem(title: "555", thumbnail: nil))
+        section3.sectionItems.append(PortfolioItem(title: "666", thumbnail: nil))
+        section3.sectionItems.append(PortfolioItem(title: "777", thumbnail: nil))
+        section3.sectionItems.append(PortfolioItem(title: "888", thumbnail: nil))
+        section3.sectionItems.append(PortfolioItem(title: "999", thumbnail: nil))
+        
+        self.portfolio += [section1, section2, section3]
+        
+        self.columns = 0
+        
+        super.init(coder: aDecoder)
+        
+        self.calculateNumberOfColumns()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,15 +69,12 @@ class PortfolioCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.calculateNumberOfColumns()
     }
     
     // MARK: Methods
     
     func calculateNumberOfColumns() {
         self.columns = 3
-        self.collectionView?.reloadData()
     }
 }
 
@@ -61,15 +87,19 @@ extension PortfolioCollectionViewController: UICollectionViewDataSource {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.portfolio[section].count
+        return self.portfolio[section].sectionItems.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PortfolioCollectionViewCell
         cell.backgroundColor = UIColor.darkGrayColor()
-        cell.title.text = self.portfolio[indexPath.section][indexPath.row]
-        cell.imageView.backgroundColor = UIColor.lightGrayColor()
+        cell.title.text = self.portfolio[indexPath.section].sectionItems[indexPath.row].title
         
+        if (self.portfolio[indexPath.section].sectionItems[indexPath.row].thumbnail != nil) {
+            cell.imageView.image = self.portfolio[indexPath.section].sectionItems[indexPath.row].thumbnail
+        } else {
+            cell.imageView.backgroundColor = UIColor.lightGrayColor()
+        }
         return cell
     }
 }
