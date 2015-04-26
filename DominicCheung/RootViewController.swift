@@ -13,10 +13,15 @@ let kHaveShownIntroKey : String = "have_shown_intro"
 class RootViewController : UIViewController {
     
     var introPageViewController : IntroPageViewController?
+    var portfolioCollectionViewController : UINavigationController
     
     // MARK: Initialiser
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        // Setup PortfolioCollectionViewController
+        let portfolioCollectionStoryboard : UIStoryboard = UIStoryboard(name: "PortfolioCollectionStoryboard", bundle: nil)
+        portfolioCollectionViewController = portfolioCollectionStoryboard.instantiateInitialViewController() as! UINavigationController
+        
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -33,6 +38,10 @@ class RootViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addChildViewController(self.portfolioCollectionViewController)
+        self.view.addSubview(self.portfolioCollectionViewController.view)
+        self.portfolioCollectionViewController.didMoveToParentViewController(self)
+        
         
         if (NSUserDefaults.standardUserDefaults().boolForKey(kHaveShownIntroKey) == false) {
             self.displayIntro()
