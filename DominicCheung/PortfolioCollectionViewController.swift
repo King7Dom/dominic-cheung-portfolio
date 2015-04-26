@@ -127,7 +127,7 @@ extension PortfolioCollectionViewController: UICollectionViewDelegate {
 extension PortfolioCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let cellWidth = (CGRectGetWidth(collectionView.bounds) - (kCellHorizontalMargin * CGFloat(columns))) / CGFloat(columns)
+        let cellWidth = (CGRectGetWidth(collectionView.bounds) - (kCellHorizontalMargin * CGFloat(columns-1))) / CGFloat(columns)
         
         return CGSize(width: cellWidth, height: cellWidth)
     }
