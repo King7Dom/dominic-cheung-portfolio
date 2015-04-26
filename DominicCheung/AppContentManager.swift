@@ -78,6 +78,12 @@ class AppContentManager: NSObject {
             contentObserver.portfolioContentUpdated(self.portfolio)
         }
     }
+    
+    // MARK: Item Retrieval
+    
+    func protfolioItemAtIndexPath(indexPath: NSIndexPath) -> PortfolioItem {
+        return self.portfolio[indexPath.section].sectionItems[indexPath.row]
+    }
 }
 
 protocol AppContentObserver {
