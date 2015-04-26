@@ -17,7 +17,9 @@ class IntroPageViewController: UIPageViewController {
     let pageControl : UIPageControl
     var dismissDelegate : IntroPageDismissDelegate? = nil
     var pages : [[String : String]]
-
+    
+    // MARK: Initialiser
+    
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [NSObject : AnyObject]?) {
         // Setup placeholder content for PageContentViewController
         let page1 : [String : String] = [
@@ -66,6 +68,13 @@ class IntroPageViewController: UIPageViewController {
         self.init(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: ViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -109,13 +118,9 @@ class IntroPageViewController: UIPageViewController {
             self.view.frame.origin.x = 0.0
         })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    // UIButton Target and Action Methods
+    // MARK: UIButton Target and Action Methods
+    
     func changePage(sender:UIPageControl!) {
         println("Changed page to " + String(self.pageControl.currentPage))
         // Setup startup PageContentViewController
@@ -136,6 +141,8 @@ class IntroPageViewController: UIPageViewController {
         }
     }
 }
+
+// MARK: UIPageViewControllerDataSource
 
 extension IntroPageViewController : UIPageViewControllerDataSource {
     
@@ -172,6 +179,8 @@ extension IntroPageViewController : UIPageViewControllerDataSource {
     }
 }
 
+// MARK: UIPageViewControllerDelegate
+
 extension IntroPageViewController : UIPageViewControllerDelegate {
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
         if (completed && finished) {
@@ -181,6 +190,8 @@ extension IntroPageViewController : UIPageViewControllerDelegate {
         }
     }
 }
+
+// MARK: IntroPageDismissDelegate
 
 protocol IntroPageDismissDelegate {
     func dismissIntroPage() -> Void

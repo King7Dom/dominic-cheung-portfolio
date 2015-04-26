@@ -14,6 +14,8 @@ class RootViewController : UIViewController {
     
     var introPageViewController : IntroPageViewController?
     
+    // MARK: Initialiser
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nil, bundle: nil)
     }
@@ -22,6 +24,13 @@ class RootViewController : UIViewController {
         self.init(nibName: nil, bundle: nil)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: ViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,12 +38,10 @@ class RootViewController : UIViewController {
             self.displayIntro()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    // MARK: Methods
+    
+    // Display IntroPage
     func displayIntro() {
         self.introPageViewController = IntroPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
         self.introPageViewController!.dismissDelegate = self
@@ -52,6 +59,8 @@ class RootViewController : UIViewController {
         }
     }
 }
+
+// MARK: IntroPageDismissDelegate
 
 extension RootViewController : IntroPageDismissDelegate {
     

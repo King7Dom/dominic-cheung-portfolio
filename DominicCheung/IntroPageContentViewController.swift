@@ -17,6 +17,8 @@ class IntroPageContentViewController: UIViewController {
     var descriptionText : String
     var pageIndex : Int
     
+    // MARK: Initialiser
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         self.mainText = ""
         self.descriptionText = ""
@@ -29,6 +31,14 @@ class IntroPageContentViewController: UIViewController {
         self.init(nibName: "IntroPageContentViewController", bundle: nil)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // MARK: ViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,10 +50,5 @@ class IntroPageContentViewController: UIViewController {
         
         self.mainLabel.text = self.mainText
         self.descriptionLabel.text = self.descriptionText
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
