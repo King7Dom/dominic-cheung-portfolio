@@ -11,12 +11,11 @@ import UIKit
 class PortfolioItem: NSObject {
     
     var title: String
+    var bodyText: String?
     var thumbnail: UIImage?
     
-    init(title: String, thumbnail: UIImage?) {
+    init(title: String) {
         self.title = title
-        self.thumbnail = thumbnail
-        
         super.init()
     }
 }

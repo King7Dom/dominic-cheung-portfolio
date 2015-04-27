@@ -104,6 +104,12 @@ extension PortfolioCollectionViewController: UICollectionViewDataSource {
 
 extension PortfolioCollectionViewController: UICollectionViewDelegate {
     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let portfolioDetailViewContorller = PortfolioDetailViewController(nibName: "PortfolioDetailViewController", bundle: nil)
+        portfolioDetailViewContorller.indexPath = indexPath
+        
+        self.navigationController?.pushViewController(portfolioDetailViewContorller, animated: true)
+    }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout

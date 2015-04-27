@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Dominic Cheung-->
+        <!--Portfolio-->
         <scene sceneID="Hsq-Dg-THK">
             <objects>
                 <collectionViewController id="mEA-uZ-Ntz" customClass="PortfolioCollectionViewController" customModule="DominicCheung" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,7 +81,7 @@
                             <outlet property="delegate" destination="mEA-uZ-Ntz" id="2XX-st-aom"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Dominic Cheung" id="PAE-v5-3lA"/>
+                    <navigationItem key="navigationItem" title="Portfolio" id="PAE-v5-3lA"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hA7-qH-H30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
