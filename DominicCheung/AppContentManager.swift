@@ -8,12 +8,6 @@
 
 import UIKit
 
-let kPayloadSectionKey = "section"
-let kPayloadSectionTitleKey = "section title"
-let kPayloadSectionItemsKey = "section items"
-
-let kPayloadItemTitleKey = "title"
-
 class AppContentManager: NSObject {
     
     // MARK: Class
@@ -27,6 +21,14 @@ class AppContentManager: NSObject {
     }
     
     // MARK: Instance
+    
+    let kPayloadSectionKey = "section"
+    let kPayloadSectionTitleKey = "section title"
+    let kPayloadSectionItemsKey = "section items"
+    
+    let kPayloadItemTitleKey = "title"
+    let kPayloadItemBodyKey = "body"
+    let kPayloadItemThumbnailKey = "thumbnail"
     
     private var portfolio: [PortfolioSection]
     private var contentObservers: NSMutableArray
@@ -63,7 +65,8 @@ class AppContentManager: NSObject {
         for section in sections {
             let portfolioSection = PortfolioSection(sectionTitle: section[kPayloadSectionTitleKey] as! String, sectionItems: [])
             for sectionItem in section[kPayloadSectionItemsKey] as! NSArray {
-                let portfolioItem = PortfolioItem(title: sectionItem[kPayloadItemTitleKey] as! String, thumbnail: nil)
+                let portfolioItem = PortfolioItem(title: sectionItem[kPayloadItemTitleKey] as! String)
+                portfolioItem.bodyText = sectionItem[kPayloadItemBodyKey] as? String
                 portfolioSection.sectionItems.append(portfolioItem)
             }
             self.portfolio.append(portfolioSection)
@@ -81,7 +84,7 @@ class AppContentManager: NSObject {
     
     // MARK: Item Retrieval
     
-    func protfolioItemAtIndexPath(indexPath: NSIndexPath) -> PortfolioItem {
+    func portfolioItemAtIndexPath(indexPath: NSIndexPath) -> PortfolioItem {
         return self.portfolio[indexPath.section].sectionItems[indexPath.row]
     }
 }

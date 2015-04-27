@@ -1,37 +1,51 @@
 {
     "section": [
       {
-         "section title": "Hello World",
+         "section title": "Hello World!",
          "section items": [
-            {"title": "Dominic Cheung"},
-            {"title": "Tennis"},
-            {"title": "Superheroes"}
+            {
+               "title": "Dominic Cheung",
+               "body": "My name is Dominic! \n\nI am currently studying Master of Information Technology, majoring in Software Engineering, at University of Sydney. I am also working as a mobile graduate developer at Fairfax Media. \n\nI started this app as an application for a scholarshop to Apple WWDC and hoping to use this oppotunity to start learning Swift. \n\n\nMail: dom.with.a.inic@gmail.com"
+            }, {
+               "title": "Tennis",
+               "body": "I am not the biggest sports fan, but Tennis is the one sport that I just can't stop watching and playing. \n\nLast year, I finally got to travel to Melbourne and watch the Australian Open, despite sitting on the last row of the stadium (literally touching the wall), the energy level is just completely different from home. I got to watch the epic 5 setter between Djokovic vs. Wawrinka and Federer vs. Murray"
+            }
          ]
       },
       {
-         "section title": "Programming Languages",
+         "section title": "Software Engineering",
          "section items": [
-            {"title": "Swift!"},
-            {"title": "Objective C"},
-            {"title": "Python"},
-            {"title": "Java"},
-            {"title": "SQL"}
+            {
+               "title": "Programming Languages",
+               "body": "The two main programming languages that I am most comfortable with are most likely Objective-C and Python. I am also comfortable with Java due to my studies, which is the main language that the university uses. I an sufficient in SQL, probably to the level which I can read and understand most of the scripts. \n\nI'm not too fond of the idea of learning and focus on one or two programming languages, because I feel that will restrict how much I can learn and the projects that I can participate in. It's like learning new languages, English is good, but a little French on the side will make you the center of the party. Oh! And Javascript! I have used it mostly with frameworks, for example, AngularJS and NodeJS. It isn't the most elegant language out there, and it requires a lot of frameworks to make it easier to work with for software development"
+            }, {
+               "title": "Swift",
+               "body": "This app! This app is actually my first experience with Swift and I was very excited to finally to have a chance (or excuse) to sit down for a weekend and play with the latest and greatest.\nI think Swift is moving in the right direction in terms of the future of iOS. The syntax is a lot cleaner compare to the square-braces-prone Objective-C. It has a lot of nice features, but it still needs a lot of work in order for it to be compared with Objective-C. In terms of this project, it was nice to sit down and create something from scratch, a luxury that I was not afforded at work.\n\n\nGithub: https://github.com/King7Dom/dominic-cheung-portfolio"
+            }, {
+               "title": "iOS",
+               "body": "My main role for my current graduate mobile position is to develop and maintain the iOS Masthead apps for Fairfax Media. It was my first contact with Objective-C and Cocoa Touch, and I loved it. \n\nI came from a background of mostly university projects and following open source project, so it was a very welcome change to play with a much larger scaled app. \n\nI have worked on the Brisbane Times iPad app, that was release late 2014, briefly when I first joined the company and I am currently deeply involving in getting the Australian Finacial Review iPad into a releasable state.\n\n\nBrisbane Times: https://itunes.apple.com/au/app/brisbane-times-for-ipad/id894888643?mt=8"
+            }, {
+               "title": "Android",
+               "body": "My time with Android was mostly during my time at university. It was an interesting experience because Android is such an versatile in terms of purpose and environment, and most can argue that can be a negative trait. I worked with it mostly within the realm of usability engineering, to get a quick and simple prototype and participate in a user feedback loop to iterative improve a design. \n\nThe interface that I was building was a step counter, and it was interesting to see the effect of positive language and negative goals. For example: user react differently to a steps goal to a inactivity tracker, because one provide positive encouragment and another has a negative reminder of how the user has failed."
+            }, {
+               "title": "AngularJS & NodeJS",
+               "body": "This school project's goal was to create a No-SQL storage polyglot and use Java to create a simple frontend to provide a simple musician social network/profile.\nBecause my lecturer allowed for more flexibility in the project, in terms of what technology choose to use, as long as it interacts with a No-SQL polyglot, I decided to learn AngularJS to provide a web based front end MVC and use NodeJS to provide a REST API for Angular to use to interactive with the server side backend.\n\nThe project works with a MongoDB database to provide a relational-like database that stores the musician's details, such as band members or tour dates. It also work with a Neo4j database to store the relational data between the msuciaians and fans, such as, who is a follower of a particular band, or which musician are they influenced by.\n\nI think the greatest enjoyment was the first time I got to choose the technology that I worked with, instead forced upon me. I was able to logically decide which toolset will be best help me achieve my goal.\nI guess that explains my full mark for an assignment ;)"
+            }, {
+               "title": "Natural Language Processing",
+               "body": "This was a project that uses perceptron model to categorise words. The subject was very interesting because it was the first time that I worked inside computational linguistics and statistics. I was able to use Python to implement the perceptron model, for word prediction, and viterbi algorithm, for sentence prediction, with lazy loading to dramatically increase time efficiency. I was able to achieve 85% success rate."
+            }
          ]
-      },
-      {
-         "section title": "Projects",
-         "section items": [
-            {"title": "iOS!"},
-            {"title": "Android"},
-            {"title": "AngularJS & NodeJS"}
-         ]
-      },
-      {
+      }, {
          "section title": "Education",
          "section items": [
-            {"title": "University of New South Wales"},
-            {"title": "University of Sydney"}
+            {
+               "title": "University of New South Wales",
+               "body": "Degree: Bachelor of Architectural Computing - Graduated\nCore Expertise\nAugmented Reality, Building Information Modelling, Modelling and Visualisation, Interactive installations/sensors, Experimental and Computational Modelling"
+            }, {
+               "title": "University of Sydney",
+               "body": "Degree: Master of Information Technology (Software Engineering) - Final Year\nCore Expertise\nObject Oriented Programming, Algorithm, Object Oriented Application Frameworks, Pervasive Computing, Natural Language Processing, UML annotation, Design Pattern"
+            }
          ]
-      },
+      }
    ]
 }
